@@ -53,10 +53,20 @@ random.shuffle(names)
 
 used_numbers = []
 
+count = 1
 while 1:
-    print()
-    gift_number = int(input('Enter a random number between 1 and {} inclusive:  '.format(len(names))))
-    print("You selected {}\'s gift!".format(names[gift_number - 1]))
-    if gift_number in used_numbers:
-        print('That number has already been selected.  Try again!')
-    used_numbers.append(gift_number)
+    try:
+        print()
+        print(f"Number {count} is up!")
+        gift_number = int(input('Enter a random number between 1 and {} inclusive:  '.format(len(names))))
+        print("You selected {}\'s gift!".format(names[gift_number - 1]))
+        if gift_number in used_numbers:
+            print('That number has already been selected.  Try again!')
+        else:
+            count += 1
+        used_numbers.append(gift_number)
+    except KeyboardInterrupt:
+        import sys
+        sys.exit()
+    except:
+        pass
