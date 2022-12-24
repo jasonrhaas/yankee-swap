@@ -1,4 +1,12 @@
 import random
+import string
+from collections import OrderedDict
+
+
+def translate(letter):
+    fun = list(string.ascii_lowercase)
+    num = fun.index(letter)
+    return num
 
 
 names = [
@@ -16,6 +24,7 @@ numbers = list(range(1, len(names) + 1))
 random.shuffle(names)
 
 assignments = dict(zip(names, numbers))
+assignments = OrderedDict(sorted(assignments.items(), key=lambda t: t[1]))
 
 tree = '''
       /\      
@@ -53,12 +62,13 @@ random.shuffle(names)
 
 used_numbers = []
 
-count = 1
-while 1:
+count = 0
+for name, num in assignments.items():
     try:
         print()
-        print(f"Number {count} is up!")
-        gift_number = int(input('Enter a random number between 1 and {} inclusive:  '.format(len(names))))
+        # print(f"Number {count} is up!")
+        print(f"{name} is up!")
+        gift_number = int(input('To pick a gift: enter a random number between 1 and {} inclusive:  '.format(len(names))))
         print("You selected {}\'s gift!".format(names[gift_number - 1]))
         if gift_number in used_numbers:
             print('That number has already been selected.  Try again!')
