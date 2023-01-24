@@ -53,7 +53,15 @@ print()
 print('Gifts')
 print('-------------------')
 
-random.shuffle(names)
+fun = list(string.ascii_lowercase)
+fun = fun[:len(assignments)]
+random.shuffle(fun)
+count = 0
+for name in assignments.items():
+    print(f"{fun[count]} ------> {name}")
+    count += 1
+
+# random.shuffle(names)
 
 # gifts = dict(zip(names, numbers))
 # print(gifts)
@@ -62,21 +70,24 @@ random.shuffle(names)
 
 used_numbers = []
 
-count = 0
-for name, num in assignments.items():
-    try:
-        print()
-        # print(f"Number {count} is up!")
-        print(f"{name} is up!")
-        gift_number = int(input('To pick a gift: enter a random number between 1 and {} inclusive:  '.format(len(names))))
-        print("You selected {}\'s gift!".format(names[gift_number - 1]))
-        if gift_number in used_numbers:
-            print('That number has already been selected.  Try again!')
-        else:
-            count += 1
-        used_numbers.append(gift_number)
-    except KeyboardInterrupt:
-        import sys
-        sys.exit()
-    except:
-        pass
+# count = 1
+# # for name, num in assignments.items():
+# while 1:
+#     try:
+#         print()
+#         print(f"Number {count} is up!")
+#         # print(f"{name} is up!")
+#         gift_number = int(input('To pick a gift: enter a random number between 1 and {} inclusive:  '.format(len(names))))
+#         if gift_number in used_numbers:
+#             print('That number has already been selected.  Try again!')
+#         # elif gift_number == count:
+#         #     print('That is your number.  Try again!')
+#         else:
+#             count += 1
+#         print("You selected {}\'s gift!".format(names[gift_number - 1]))
+#         used_numbers.append(gift_number)
+#     except KeyboardInterrupt:
+#         import sys
+#         sys.exit()
+#     except:
+#         pass
